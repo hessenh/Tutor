@@ -5,8 +5,8 @@ Meteor.publish('meetup',function(){
 })
 
 Meteor.methods({
-	'createMeetup':function(title,info,date,time,location){
-		console.log(title,info,date,time,location);
+	'createMeetup':function(title,info,date,time,location,lat,lng,username,userId){
+		Meetup.insert({title:title,info:info,date:date,time:time,location:location,lat:lat,lng:lng,username:username,userId:userId});
 	}
 	
 })

@@ -2,38 +2,48 @@ Template.setLocationMap.events({
 	'click .close':function(e,t){
 		Session.set("show_map",false);
 		$('.createMeetup').removeClass('blurClass');
-	},
-	'click .gm-style':function(e,t){
-		console.log(e);
 	}
 });
 
 
 Template.setLocationMap.rendered = function() {  
-	
-	var p2 = Session.get('location');
-	map.setCenter(new google.maps.LatLng(p2.lat, p2.lng));
+	geocoder = new google.maps.Geocoder();
+    var mapOptions = {
+        zoom: 12,
+        center: new google.maps.LatLng(-44.6895642,169.1320571),
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    };
 
+    map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+    var location = {
+		lat:-44.6895642,
+		lng:169.1320571
+	};
 	var marker = new google.maps.Marker({
-		position: new google.maps.LatLng(p2.lat, p2.lng),
-		title:'Meine Position',
-		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+	        position: location,
+	        map: map
 	});
-	marker.setMap(map);   
 
-	Session.set('map', true);
+	google.maps.event.addListener(map, 'click', function(event) {
+		marker.setMap(null);
+	    marker = new google.maps.Marker({
+	        position: event.latLng,
+	        map: map
+	    });
+	    //map.setCenter(event.latLng);
+
+	    geocoder.geocode( { 'latLng': event.latLng}, function(results, status) {
+	        if (status == google.maps.GeocoderStatus.OK) {
+	        	$('.meetupAddress').val(results[0].formatted_address);
+	        	$('.setLocation').val(results[0].formatted_address);
+	        	
+	        	Session.set("lat",event.latLng.k);
+	        	Session.set("lng",event.latLng.B);
+
+	        } else {
+	            alert("Can't find address. Pick new place!");
+	        }
+	    });
+    });
+	map.setCenter(location);
 };
-
-Meteor.startup(function() {
-	var mapOptions = {
-		zoom: 12,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);  
-	var location = {
-		lat : -34.397,
-		lng : 150.644
-	};
-	Session.set("location",location);
-	console.log(Session.get("location"))
-});

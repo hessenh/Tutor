@@ -4,16 +4,18 @@ Template.createMeetup.events({
 		var info = t.find('.meetupInfo').value;
 		var date = t.find('.meetupDate').value;
 		var time = t.find('.meetupTime').value;
-		var location = t.find('.meetupLoc').value;
+		var location = t.find('.setLocation').value;
+		var lat = Session.get("lat");
+		var lng = Session.get("lng");
 
-		Meteor.call('createMeetup',title,info,date,time,location);
-
-
+		Meteor.call('createMeetup',title,info,date,time,location,lat,lng,Meteor.user().profile.name,Meteor.user()._id);
 	},
 	'click .setLocation':function(e,t){
-		//$('.setLocationMap').addClass('show');
 		$('.createMeetup').addClass('blurClass');
 		Session.set("show_map",true)
+	},
+	'click .cancelMeetup':function(e,t){
+		Router.go("home");
 	}
 })
 

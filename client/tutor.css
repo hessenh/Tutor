@@ -88,6 +88,7 @@ sub {
   bottom: -0.25em;
 }
 img {
+  vertical-align: middle;
   border: 0;
 }
 svg:not(:root) {
@@ -4680,6 +4681,7 @@ a.thumbnail.active {
   border-color: #2196f3;
 }
 .thumbnail .caption {
+
   padding: 9px;
   color: #666666;
 }
@@ -6860,4 +6862,7 @@ header.homeHeader {
 
 .blurClass{
   opacity:0.1;
+}
+.viewPrevButton{
+  text-align: center;
 }
