@@ -3,6 +3,7 @@ Router.map(function() {
 	this.route('home');
 	this.route('signIn')
 	this.route('profile')
+	this.route('createMeetup')
 });
 
 Router.configure({
