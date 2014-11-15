@@ -1,6 +1,30 @@
 <template name="viewMeetup">
-	{{#if currentMeetup}}
-		{{currentMeetup.title}}
-	{{/if}}
+	<header class="createMeetupheader">
+		<div class="container">
+			<h1>{{currentMeetup.title}}</h1>
+			<p>What: {{currentMeetup.info}}</p>
+			<p>When: {{currentMeetup.date}} at {{currentMeetup.time}}</p>
+			<p>Where: {{currentMeetup.location}}</p>
+		</div>
+	</header>
+	<div class="col-lg-10 col-lg-offset-2">
+		<div class="col-lg-4">
+			<h3>Participants:</h3>
+			<blockquote>
+				{{#each viewMeetupParticipants}}
+					<h3>{{userName}}</h3>
+		  		{{/each}}
+			</blockquote>
+			{{#if isAttending}}
+				<a class="btn btn-default btn-lg btn-block notAttendMeetup">Not Attending!</a>
+			{{else}}
+				<a class="btn btn-default btn-lg btn-block attendMeetup">Attend!</a>
+			{{/if}}
+		</div>
 
+		<div class="col-lg-8">
+			{{>viewLocationMap}}
+		</div>
+
+	</div>
 </template>

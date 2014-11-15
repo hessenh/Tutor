@@ -6841,6 +6841,24 @@ header.homeHeader {
   background-color: #D0D0D0;
   /*background-image: url(/assets/img/bg.png);*/
 }
+header.createMeetupheader {
+  position: relative;
+  padding: 30px 15px;
+  text-align: left;
+  color: rgba(255,255,255,.8);
+  background-color: #D0D0D0;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+header.meetupHeader{
+  position: relative;
+  padding: 30px 15px;
+  text-align: left;
+  color: rgba(255,255,255,.8);
+  background-color: #D0D0D0;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
 
 .createMeetup{
 

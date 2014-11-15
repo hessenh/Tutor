@@ -10,14 +10,14 @@ Template.setLocationMap.rendered = function() {
 	geocoder = new google.maps.Geocoder();
     var mapOptions = {
         zoom: 12,
-        center: new google.maps.LatLng(-44.6895642,169.1320571),
+        center: new google.maps.LatLng(34.41462,-119.86328),
         mapTypeId: google.maps.MapTypeId.HYBRID
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
     var location = {
-		lat:-44.6895642,
-		lng:169.1320571
+		lat:34.41462,
+		lng:-119.86328
 	};
 	var marker = new google.maps.Marker({
 	        position: location,

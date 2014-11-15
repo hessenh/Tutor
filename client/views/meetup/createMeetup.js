@@ -9,6 +9,7 @@ Template.createMeetup.events({
 		var lng = Session.get("lng");
 
 		Meteor.call('createMeetup',title,info,date,time,location,lat,lng,Meteor.user().profile.name,Meteor.user()._id);
+		Router.go("home");
 	},
 	'click .setLocation':function(e,t){
 		$('.createMeetup').addClass('blurClass');

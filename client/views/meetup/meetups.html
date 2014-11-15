@@ -1,26 +1,13 @@
 <template name="meetups">
-	{{#each meetupList}}
-		{{>meetupItem}}
-	{{/each}}
+	<header class="meetupHeader">
+		<div class="container">
+			<h1>Brows Meetups</h1>
+			<p>Bla bla</p>
+		</div>
+	</header>
+	<div class="col-lg-8 col-lg-offset-2">
+		{{>meetupList}}
+	</div>
 </template>
 
 
-<template name="meetupItem">
-	<div class="col-lg-4 col-sm-6">
-            <div class="thumbnail">
-                <a  class="post-image-link">
-                    <p><img src="/gray.jpg" class="img-responsive"></p>
-                </a>
-                <div class="caption">
-                	<blockquote>
-				  		<h3>{{title}}</h3>
-					</blockquote>
-					<blockquote>
-				  		<p>{{info}}</p>
-					</blockquote>
-					
-                    <a  class="btn btn-default viewMeetupBtn">View</a>
-                </div>
-            </div>
-        </div>
-</template>
